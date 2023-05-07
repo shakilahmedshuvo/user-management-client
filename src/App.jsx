@@ -17,7 +17,22 @@ function App() {
     const email = form.email.value;
     const user = { name, email }
     console.log(user);
+    // new fetch method start
+    fetch('http://localhost:5000/users', {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify(user)
+    })
+      .then(res => res.json())
+      .then(data => {
+        console.log('inside post response', data);
+      })
   }
+  // new fetch method end
+
+
   return (
     <>
       <h1>User Management System</h1>
